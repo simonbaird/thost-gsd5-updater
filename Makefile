@@ -17,9 +17,10 @@ build:
 #   TH_LOGIN=simon.baird@gmail.com TH_PASS_FILE=~/.thostpass make upload
 TH_DIR=../tiddlyhost
 UPLOADER=$(TH_DIR)/examples/thost-uploader
-BACKUPS_DIR=$(MPTW_DIR)/backups
+BACKUPS_DIR=./backups
 upload:
-	$(UPLOADER) gsd5-empty $(GSD5_EMPTY_FILE) $(TH_LOGIN) $$(cat $(TH_PASS_FILE))
-	$(UPLOADER) gsd5x-empty $(GSD5X_EMPTY_FILE) $(TH_LOGIN) $$(cat $(TH_PASS_FILE))
+	@mkdir -p $(BACKUPS_DIR)
+	@env DOWNLOAD_DIR=$(BACKUPS_DIR) $(UPLOADER) gsd5-empty $(GSD5_EMPTY_FILE) $(TH_LOGIN) $$(cat $(TH_PASS_FILE))
+	@env DOWNLOAD_DIR=$(BACKUPS_DIR) $(UPLOADER) gsd5x-empty $(GSD5X_EMPTY_FILE) $(TH_LOGIN) $$(cat $(TH_PASS_FILE))
 
 update: build upload

@@ -8,11 +8,13 @@ TIDDLYWIKI_DIR=../TiddlyWiki5
 
 BUILD_DIR=./build
 
+TW_VERSION=5.3.1
+
 .PHONY: build
 build:
 	@mkdir -p $(BUILD_DIR)
-	cd $(TIDDLYWIKI_DIR) && git log -n1
-	cd $(GSD5_DIR) && git log -n1 && bin/build.sh
+	cd $(TIDDLYWIKI_DIR) && git checkout v$(TW_VERSION) && git log --oneline -n1
+	cd $(GSD5_DIR) && git log --oneline -n1 && bin/build.sh
 	cp $(GSD5_OUTPUT_DIR)/$(GSD5_EMPTY_FILE) $(BUILD_DIR)/
 	cp $(GSD5_OUTPUT_DIR)/$(GSD5X_EMPTY_FILE) $(BUILD_DIR)/
 

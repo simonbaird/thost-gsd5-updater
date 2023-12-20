@@ -8,7 +8,7 @@ TIDDLYWIKI_DIR=../TiddlyWiki5
 
 BUILD_DIR=./build
 
-TW_VERSION=5.3.2
+TW_VERSION ?= "5.3.3"
 
 COREJS_URL=https://raw.githubusercontent.com/simonbaird/tiddlyhost/main/rails/public/tiddlywikicore-$(TW_VERSION).js
 
@@ -35,7 +35,7 @@ upload:
 	@env DOWNLOAD_DIR=$(BACKUPS_DIR) $(UPLOADER) gsd5x-empty $(BUILD_DIR)/$(GSD5X_EMPTY_FILE) $(TH_LOGIN) $$(cat $(TH_PASS_FILE))
 
 # Example usage:
-#   TH_LOGIN=simon.baird@gmail.com TH_PASS_FILE=~/.thostpass make update
+#   TW_VERSION=5.3.3 TH_LOGIN=simon.baird@gmail.com TH_PASS_FILE=~/.thostpass make update
 update: build upload
 
 clean:

@@ -1,5 +1,5 @@
 
-GSD5_DIR=../gsd5
+GSD5_DIR=../gsd5-core
 GSD5_OUTPUT_DIR=../gsd5-output
 GSD5_EMPTY_FILE=index.html
 GSD5X_EMPTY_FILE=externalcore.html

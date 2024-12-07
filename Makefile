@@ -12,14 +12,17 @@ TW_VERSION ?= "5.3.3"
 
 COREJS_URL=https://raw.githubusercontent.com/simonbaird/tiddlyhost/main/rails/public/tiddlywikicore-$(TW_VERSION).js
 
-$(BUILD_DIR)/tiddlywikicore-$(TW_VERSION).js:
+.PHONY: build-dir
+build-dir:
+	@mkdir -p $(BUILD_DIR)
+
+$(BUILD_DIR)/tiddlywikicore-$(TW_VERSION).js: build-dir
 	curl -sL $(COREJS_URL) -o $@
 
 corejs: $(BUILD_DIR)/tiddlywikicore-$(TW_VERSION).js
 
 .PHONY: build
-build: corejs
-	@mkdir -p $(BUILD_DIR)
+build: build-dir corejs
 	cd $(TIDDLYWIKI_DIR) && git checkout v$(TW_VERSION) && git log --oneline -n1
 	cd $(GSD5_DIR) && git log --oneline -n1 && bin/build.sh
 	cp $(GSD5_OUTPUT_DIR)/$(GSD5_EMPTY_FILE) $(BUILD_DIR)/

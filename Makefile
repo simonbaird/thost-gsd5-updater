@@ -8,7 +8,7 @@ TIDDLYWIKI_DIR=../TiddlyWiki5
 
 BUILD_DIR=./build
 
-TW_VERSION ?= "5.3.3"
+TW_VERSION ?= 5.3.6
 
 COREJS_URL=https://raw.githubusercontent.com/simonbaird/tiddlyhost/main/rails/public/tiddlywikicore-$(TW_VERSION).js
 

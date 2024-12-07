@@ -26,7 +26,7 @@ build: corejs
 	cp $(GSD5_OUTPUT_DIR)/$(GSD5X_EMPTY_FILE) $(BUILD_DIR)/
 
 # Use the script in the tiddlyhost examples directory for uploading
-TH_DIR=../tiddlyhost
+TH_DIR=../tiddlyhost-com
 UPLOADER=$(TH_DIR)/examples/thost-uploader
 BACKUPS_DIR=./backups
 upload:
@@ -35,7 +35,7 @@ upload:
 	@env DOWNLOAD_DIR=$(BACKUPS_DIR) $(UPLOADER) gsd5x-empty $(BUILD_DIR)/$(GSD5X_EMPTY_FILE) $(TH_LOGIN) $$(cat $(TH_PASS_FILE))
 
 # Example usage:
-#   TW_VERSION=5.3.3 TH_LOGIN=simon.baird@gmail.com TH_PASS_FILE=~/.thostpass make update
+#   TW_VERSION=5.3.3 TH_LOGIN=simon.baird@gmail.com TH_PASS_FILE=../.thostpass make update
 update: build upload
 
 clean:
